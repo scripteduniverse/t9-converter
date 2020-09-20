@@ -1,0 +1,28 @@
+{
+  "main": "packages/server/lib/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "concurrently": "^3.5.0",
+    "flow-bin": "^0.59.0",
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "apollo-server-micro": "^1.2.0",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.7.2",
+    "isomorphic-fetch": "^2.2.1",
+    "micro": "^9.0.1",
+    "next": "^4.1.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  },
+  "scripts": {
+    "start": "yarn run concurrently --kill-others --names=\"SERVER,CLIENT\" \"yarn run babel packages/server/src/ --out-dir packages/server/lib/ --ignore=__tests__ && yarn run micro\" \"yarn run next packages/client --port=4000\"",
+    "test": "yarn run flow && yarn run jest"
+  }
+}
+
